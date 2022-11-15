@@ -16,7 +16,7 @@ function init(self)
 	go.EASING_INOUTQUAD, 0.5)
 	go.animate(".", "position.x", go.PLAYBACK_LOOP_PINGPONG, to, 
 	go.EASING_LINEAR, duration)
-	go.EASING_INOUTQUAD, duration)
+	
 	-- flip sprite
 	local flip = false
 	timer.delay(duration / 2, true, function()

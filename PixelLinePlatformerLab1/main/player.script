@@ -48,6 +48,8 @@ function init(self)
 	self.previous_ground_contact = true
 	-- the currently playing animation
 	self.anim = nil
+	self.start_time = socket.gettime()
+	self.time_elapsed = 0.0
 end
 
 
@@ -134,6 +136,9 @@ function update(self, dt)
 	self.correction = vmath.vector3()
 	self.ground_contact = false
 	self.wall_contact = false
+	self.time_elapsed = socket.gettime() - self.start_time
+	msg.post("/hud#timer", "update_time_elapsed",
+	{ seconds = self.time_elapsed })
 end
 
 local function walk(self, direction)

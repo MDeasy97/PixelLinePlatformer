@@ -230,12 +230,16 @@ local function jump(self)
 		self.ground_contact = false
 		-- compress and stretch player for visual "juice"
 		squish()
+	
 		-- allow double jump if still moving up
 	elseif not self.double_jump and self.velocity.y > 0 then
 		self.velocity.y = self.velocity.y + 
 		DOUBLEJUMP_TAKEOFF_SPEED
 		self.double_jump = true
 	end
+	-- add some particles
+	particlefx.play("#jump")
+	print("jump")
 end
 
 local function abort_jump(self)

@@ -47,6 +47,34 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "bee2"
+  prototype: "/main/bee.go"
+  position {
+    x: 100.0
+    y: 151.0
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  component_properties {
+    id: "bee"
+    properties {
+      id: "distance"
+      value: "10.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 collection_instances {
   id: "player"
   collection: "/main/player.collection"

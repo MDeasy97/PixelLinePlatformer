@@ -49,6 +49,8 @@ function init(self)
 	self.anim = nil
 end
 
+
+
 local function play_animation(self, anim)
 	-- only play animations which are not already playing
 	if self.anim ~= anim then
@@ -203,6 +205,34 @@ function fixed_update(self, dt)
 	-- Remove this function if not needed
 end
 
+local function squish()
+	go.animate("visuals", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 0.8, 
+	go.EASING_INOUTQUAD, 0.6)
+	go.animate("visuals", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 1.2, 
+	go.EASING_INOUTQUAD, 0.6)
+end
+
+local function jump(self)
+	-- only allow jump from ground
+	-- (extend this with a counter to do things like double-jumps)
+	if self.ground_contact then
+		-- set take-off speed
+		self.velocity.y = JUMP_TAKEOFF_SPEED
+		-- play animation
+		play_animation(self, ANIM_JUMP)
+		self.ground_contact = false
+		-- compress and stretch player for visual "juice"
+		squish()
+		-- allow double jump if still moving up
+	elseif not self.double_jump and self.velocity.y > 0 then
+		self.velocity.y = self.velocity.y + 
+		DOUBLEJUMP_TAKEOFF_SPEED
+		self.double_jump = true
+	end
+end
+
+local function abort_jump(self)
+end
 
 function on_input(self, action_id, action)
 	if action_id == LEFT then

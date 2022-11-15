@@ -259,7 +259,7 @@ end
 
 local function fire(self)
 	self.velocity.x = self.velocity.x + RECOIL * -self.direction
-	local pos = go.get_position()
+	local pos = go.get_world_position()
 	-- offset the bullet so that it is fired "outside" of the player sprite
 	pos.x = pos.x + 8 * self.direction
 	local id = factory.create("#bulletfactory", pos)

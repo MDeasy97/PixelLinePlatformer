@@ -232,6 +232,10 @@ local function jump(self)
 		self.velocity.y = JUMP_TAKEOFF_SPEED
 		-- play animation
 		play_animation(self, ANIM_JUMP)
+		-- add some particles
+		particlefx.play("#jump")
+		print("jump")-- add some particles
+		sound.play("audio#jump", {delay = 0, gain = 0.5, pan = 0, speed = 1.0})
 		self.ground_contact = false
 		-- compress and stretch player for visual "juice"
 		squish()
@@ -242,9 +246,7 @@ local function jump(self)
 		DOUBLEJUMP_TAKEOFF_SPEED
 		self.double_jump = true
 	end
-	-- add some particles
-	particlefx.play("#jump")
-	print("jump")
+	
 end
 
 local function abort_jump(self)
@@ -271,6 +273,7 @@ local function fire(self)
 	go.EASING_LINEAR, duration, 0, function()
 		go.delete(id)
 	end)
+	sound.play("audio#laser", {delay = 0, gain = 0.5, pan = 0, speed = 1.0})
 end
 
 function on_input(self, action_id, action)

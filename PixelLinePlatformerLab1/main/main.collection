@@ -51,8 +51,8 @@ instances {
   id: "bee2"
   prototype: "/main/bee.go"
   position {
-    x: 101.0
-    y: 37.0
+    x: 104.0
+    y: 43.0
     z: 1.0
   }
   rotation {
@@ -79,8 +79,8 @@ instances {
   id: "movingplatform"
   prototype: "/main/movingplatform.go"
   position {
-    x: 32.0
-    y: 40.0
+    x: 82.0
+    y: 78.0
     z: 0.0
   }
   rotation {
@@ -106,6 +106,46 @@ instances {
     x: 0.94
     y: 0.94
     z: 0.94
+  }
+}
+instances {
+  id: "bluebee"
+  prototype: "/main/bluebee.go"
+  position {
+    x: 71.0
+    y: 150.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "slime"
+  prototype: "/main/slime.go"
+  position {
+    x: 80.0
+    y: 28.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 collection_instances {

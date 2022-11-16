@@ -78,7 +78,7 @@ convex_hulls {
 convex_hulls {
   index: 56
   count: 4
-  collision_group: ""
+  collision_group: "ground"
 }
 convex_hulls {
   index: 60
@@ -88,17 +88,17 @@ convex_hulls {
 convex_hulls {
   index: 64
   count: 4
-  collision_group: ""
+  collision_group: "ground"
 }
 convex_hulls {
   index: 68
   count: 4
-  collision_group: ""
+  collision_group: "ground"
 }
 convex_hulls {
   index: 72
   count: 4
-  collision_group: ""
+  collision_group: "ground"
 }
 convex_hulls {
   index: 76
@@ -123,7 +123,7 @@ convex_hulls {
 convex_hulls {
   index: 92
   count: 4
-  collision_group: ""
+  collision_group: "ground"
 }
 convex_hulls {
   index: 96
@@ -138,7 +138,7 @@ convex_hulls {
 convex_hulls {
   index: 104
   count: 4
-  collision_group: ""
+  collision_group: "ground"
 }
 convex_hulls {
   index: 108
@@ -153,7 +153,7 @@ convex_hulls {
 convex_hulls {
   index: 116
   count: 4
-  collision_group: ""
+  collision_group: "ground"
 }
 convex_hulls {
   index: 120
@@ -316,7 +316,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "blueBee"
+  id: "bluebee"
   start_tile: 54
   end_tile: 55
   playback: PLAYBACK_LOOP_FORWARD
@@ -346,8 +346,8 @@ animations {
   id: "moving_platform"
   start_tile: 10
   end_tile: 10
-  playback: PLAYBACK_ONCE_FORWARD
-  fps: 30
+  playback: PLAYBACK_NONE
+  fps: 10
   flip_horizontal: 0
   flip_vertical: 0
 }
@@ -392,7 +392,7 @@ animations {
   start_tile: 56
   end_tile: 57
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 10
+  fps: 30
   flip_horizontal: 0
   flip_vertical: 0
 }

@@ -1,8 +1,8 @@
 emitters {
   id: "emitter"
   mode: PLAY_MODE_ONCE
-  duration: 2.0
-  space: EMISSION_SPACE_EMITTER
+  duration: 0.2
+  space: EMISSION_SPACE_WORLD
   position {
     x: 0.0
     y: 0.0
@@ -20,7 +20,7 @@ emitters {
   blend_mode: BLEND_MODE_ADD
   particle_orientation: PARTICLE_ORIENTATION_DEFAULT
   inherit_velocity: 0.0
-  max_particle_count: 5
+  max_particle_count: 3
   type: EMITTER_TYPE_CIRCLE
   start_delay: 0.0
   properties {
@@ -67,7 +67,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_LIFE_TIME
     points {
       x: 0.0
-      y: 2.0
+      y: 1.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -87,7 +87,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_SIZE
     points {
       x: 0.0
-      y: 4.0
+      y: 2.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -177,21 +177,27 @@ emitters {
     key: PARTICLE_KEY_SCALE
     points {
       x: 0.0
-      y: 0.014642752
+      y: 0.16309963
       t_x: 1.0
       t_y: 0.0
     }
     points {
-      x: 0.21532033
-      y: 2.2894464
-      t_x: 0.21578814
-      t_y: 0.9764402
+      x: 0.20405406
+      y: 2.00331
+      t_x: 0.6982127
+      t_y: -0.7158904
+    }
+    points {
+      x: 0.5952703
+      y: 2.3902097
+      t_x: 0.63059324
+      t_y: -0.7761135
     }
     points {
       x: 1.0
-      y: 2.6824088
-      t_x: 1.0
-      t_y: 0.0
+      y: 1.8369004
+      t_x: 0.17382261
+      t_y: -0.984777
     }
   }
   particle_properties {
@@ -228,6 +234,24 @@ emitters {
       y: 0.0
       t_x: 0.07194582
       t_y: 0.99740857
+    }
+    points {
+      x: 0.11320755
+      y: 0.99277455
+      t_x: 0.99418455
+      t_y: 0.10768964
+    }
+    points {
+      x: 0.7112546
+      y: 0.555656
+      t_x: 0.5694311
+      t_y: -0.82203907
+    }
+    points {
+      x: 1.0
+      y: 0.0072254334
+      t_x: 0.4737472
+      t_y: -0.8806609
     }
   }
   particle_properties {
@@ -271,9 +295,4 @@ emitters {
   duration_spread: 0.0
   stretch_with_velocity: false
   start_offset: 0.0
-  pivot {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
 }

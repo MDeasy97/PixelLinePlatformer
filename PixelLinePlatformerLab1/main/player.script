@@ -1,6 +1,7 @@
 -- these are the tweaks for the mechanics, feel free to change them for a different feeling
 -- max speed right/left
 local MAX_GROUND_SPEED = 100
+local ZERO = 0
 local MAX_AIR_SPEED = 80
 -- max fall speed
 local MAX_FALL_SPEED = 500
@@ -155,6 +156,7 @@ end
 
 -- https://defold.com/manuals/physics/#resolving-kinematic-collisions
 local function handle_obstacle_contact(self, normal, distance)
+	print (normal, distance)
 	if distance > 0 then
 		-- First, project the accumulated correction onto
 		-- the penetration vector
@@ -194,8 +196,9 @@ local function handle_obstacle_contact(self, normal, distance)
 end
 
 
-
+--[=====[ 
 function on_message(self, message_id, message, sender)
+	
 	if message.group == GROUND then
 		handle_obstacle_contact(self, message.normal, message.distance)
 	elseif message.group == MOVPLAT then
@@ -207,6 +210,24 @@ function on_message(self, message_id, message, sender)
 		msg.post(".", "set_parent", { parent_id = nil })
 		print(self.spawn_position)
 		go.set_position(self.spawn_position)
+	end
+end
+--]=====]
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("contact_point_response") then
+		if message.group == GROUND then
+			handle_obstacle_contact(self, message.normal, message.distance)
+		elseif message.group == MOVPLAT then
+			-- reparent so that the player moves with the platform
+			msg.post(".", "set_parent", { parent_id = message.other_id })
+			handle_obstacle_contact(self, message.normal, message.distance)
+		elseif message.group == RESPAWMN or message.group == ENEMY then
+			-- remove parent to ensure we can move when respawning
+			msg.post(".", "set_parent", { parent_id = nil })
+			print(self.spawn_position)
+			go.set_position(self.spawn_position)
+		end
 	end
 end
 
@@ -232,9 +253,6 @@ local function jump(self)
 		self.velocity.y = JUMP_TAKEOFF_SPEED
 		-- play animation
 		play_animation(self, ANIM_JUMP)
-		-- add some particles
-		particlefx.play("#jump")
-		print("jump")-- add some particles
 		sound.play("audio#jump", {delay = 0, gain = 0.5, pan = 0, speed = 1.0})
 		self.ground_contact = false
 		-- compress and stretch player for visual "juice"
@@ -246,7 +264,8 @@ local function jump(self)
 		DOUBLEJUMP_TAKEOFF_SPEED
 		self.double_jump = true
 	end
-	
+	-- add some particles
+	particlefx.play("#jump")
 end
 
 local function abort_jump(self)

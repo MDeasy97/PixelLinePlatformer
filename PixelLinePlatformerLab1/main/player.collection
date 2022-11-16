@@ -52,6 +52,7 @@ embedded_instances {
   "mask: \\\"respawn\\\"\\n"
   "mask: \\\"enemy\\\"\\n"
   "mask: \\\"movingplatform\\\"\\n"
+  "mask: \\\"endoflevel\\\"\\n"
   "embedded_collision_shape {\\n"
   "  shapes {\\n"
   "    shape_type: TYPE_SPHERE\\n"

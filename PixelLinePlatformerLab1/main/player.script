@@ -1,3 +1,4 @@
+require "lib.game_data"
 -- these are the tweaks for the mechanics, feel free to change them for a different feeling
 -- max speed right/left
 local MAX_GROUND_SPEED = 100
@@ -26,6 +27,7 @@ local ANIM_WALK = hash("player_walk")
 local ANIM_IDLE = hash("player_idle")
 local ANIM_JUMP = hash("player_jump")
 local ANIM_FALL = hash("player_fall")
+local END_OF_LEVEL = hash("endoflevel")
 local SPRITE = "visuals#sprite"
 
 function init(self)
@@ -51,6 +53,7 @@ function init(self)
 	self.anim = nil
 	self.start_time = socket.gettime()
 	self.time_elapsed = 0.0
+	self.game_data = load_game_data()
 end
 
 
@@ -228,7 +231,24 @@ function on_message(self, message_id, message, sender)
 			print(self.spawn_position)
 			go.set_position(self.spawn_position)
 		end
+	elseif message_id == TRIGGER_RESPONSE then
+		if message.group == END_OF_LEVEL and not self.time_set then
+			self.finish_time = socket.gettime() - self.start_time
+			self.time_set = true
+			local is_new_record = false
+			-- Check for new fastest time
+			if self.finish_time < self.game_data.levels[1].elapsed 
+			then
+				is_new_record = true
+				self.game_data.levels[1].elapsed = 
+				self.finish_time
+				save_game_data(self.game_data)
+			end
+			msg.post("/hud#endtime", "update_finish_text", { seconds 
+			= self.finish_time, is_new_record =  is_new_record})
+		end
 	end
+	
 end
 
 function fixed_update(self, dt)

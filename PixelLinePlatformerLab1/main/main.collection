@@ -148,6 +148,27 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "endoflevel"
+  prototype: "/main/endoflevel.go"
+  position {
+    x: 772.0
+    y: 115.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.4
+    y: 2.4
+    z: 1.0
+  }
+}
+
 collection_instances {
   id: "player"
   collection: "/main/player.collection"
